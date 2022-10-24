@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Morning Today </title>
+    <link rel="stylesheet" href="/custom-css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <header class="container-fluid">
+        <nav class="navbar ">
+            <div class="container-fluid">
+                <a class="navbar-brand"> <span class="p-2 rounded border border-1 " id="navbar_name">Morning</span>
+                    Today</a>
+                <div class="d-flex">
+                    <a class="nav-link active p-3 text-secondary " aria-current="page"
+                        href="/index.html">News</a>
+                    <a class="nav-link active p-3 text-primary border-bottom border-primary" aria-current="page" href="/blog.html">Blog</a>
+                    <img class="p-3" src="#" alt="Profile Profile">
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <menu>
+        <section>
+            <div class="accordion p-3" id="accordionExample">
+                <div class="accordion-item mt-5">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            What is difference between var, let and const in JavaScript?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            1. <b> let:</b> The let keyword declares a block-scoped local variable, optionally
+                                initializing it to a value.
+                                Block-scoped means that the variable is only available within the block it was declared
+                                in, which is usually denoted by curly braces {}.
+                                <br> <br>
+                                2.<b> var:</b> The var keyword declares a function-scoped or global variable, optionally
+                                initializing it to a value.
+                                Function-scoped means that the variable is only available within the function it was
+                                declared in. Global variables are available throughout your entire code.
+                                <br> <br>
+                                3. <b>const:</b> The const keyword declares a block-scoped, immutable constant variable, i.e. a
+                                variable that can’t be reassigned.
+                                Constants are also called “immutable variables”, but that’s a bit of a misnomer since
+                                they are actually variables – just ones that can’t be reassigned.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            What is difference between anonymous function and normal function ?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <b>Main Difference:</b>
+                            Regular functions created using function declarations or expressions are constructible and callable. Since regular functions are constructible, they can be called using the new keyword. However, the arrow functions are only callable and not constructible, i.e arrow functions can never be used as constructor functions.
+                            <br>
+                            <b>Arrow functions</b> – a new feature introduced in ES6 – enable writing concise functions in JavaScript. While both regular and arrow functions work in a similar manner, yet there are certain interesting differences between them, as discussed below. <br>
+                            <b>Regular functions</b> created using function declarations or expressions are ‘constructible’ and ‘callable’. Since regular functions are constructible, they can be called using the ‘new’ keyword. However, the arrow functions are only ‘callable’ and not constructible. Thus, we will get a run-time error on trying to construct a non-constructible arrow functions using the new keyword.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Why we use template string ?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Template strings are a powerful feature of modern JavaScript released in ES6. It lets us insert/interpolate variables and expressions into strings without needing to concatenate like in older versions of JavaScript. It allows us to create strings that are complex and contain dynamic elements.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </menu>
+    <footer>
+        <p class="text-center mt-5 text-secondary">Copyright 2022 Morning Today</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
