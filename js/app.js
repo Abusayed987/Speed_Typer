@@ -42,6 +42,7 @@ const toggleSpiner = isLoading => {
 const loadNewsDetails = (catagori_id) => {
     // loder start 
     toggleSpiner(true);
+    
     const url = `https://openapi.programming-hero.com/api/news/category/${catagori_id}`
     fetch(url)
         .then(res => res.json())
@@ -50,6 +51,8 @@ const loadNewsDetails = (catagori_id) => {
 
 
 const displayNewsDetails = (newsDetails) => {
+    const button = document.getElementsByTagName('button');
+
     
     //  tota news itemscount
     const items = document.getElementById('items_number');
