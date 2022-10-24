@@ -22,18 +22,30 @@ const displayCatagories = (catagories) => {
 
 }
 loadCatagories();
+// toggle spiner 
+const toggleSpiner = isLoading => {
+    const spiner = document.getElementById('loder');
+    if (isLoading) {
+        spiner.classList.remove('d-none')
+    } else {
+        spiner.classList.add('d-none')
+    }
+}
 
 
 // click button then Show news ---------------------------------------------------------------
 
 const loadNewsDetails = (catagori_id) => {
+    // loder start 
+    toggleSpiner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${catagori_id}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayNewsDetails(data.data));
 }
 const displayNewsDetails = (newsDetails) => {
-    console.log(newsDetails);
+
+    // console.log(newsDetails);
     const items = document.getElementById('items_number');
     items.innerHTML = `
     <div>
@@ -42,7 +54,7 @@ const displayNewsDetails = (newsDetails) => {
     `;
 
     const newsDetailsSection = document.getElementById('news_details');
-
+    newsDetailsSection.innerText = '';
     newsDetails.forEach(newsDetail => {
         const newsDetailDiv = document.createElement('div');
         newsDetailDiv.innerHTML = `
@@ -69,17 +81,17 @@ const displayNewsDetails = (newsDetails) => {
                 Show More
                 </button>
 
-
-            <div class="modal fade" id="showmoreModal" data-bs-backdrop="static"        data-bs-keyboard="false" tabindex="-1"
+                <div class="modal fade" id="showmoreModal" data-bs-backdrop="static"        data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="showmoreModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="showmoreModalLabel">Modal title</h1>
+                                 <h1 class="modal-title fs-5" id="showmoreModalLabel">${newsDetail.title}</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                  </div>
-                                    <div class="modal-body">
-                                     ...
+                                    <div class="modal-body"> 
+                                    Badge: ${newsDetail.rating.badge}! <br><br>
+                                    Raring: ${newsDetail.rating.number} out of 5 
                                     </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -90,8 +102,10 @@ const displayNewsDetails = (newsDetails) => {
             </div>
         </div>
     </div>  
-        `
+        `;
         newsDetailsSection.appendChild(newsDetailDiv);
     });
+// stop loder 
+toggleSpiner(false)
 }
-loadNewsDetails('01')
+// loadNewsDetails('01')
