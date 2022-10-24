@@ -1,4 +1,4 @@
-// caragories section ------------------------------------------------------------------
+// caragories section --------------------------------------
 
 const loadCatagories = () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
@@ -14,7 +14,7 @@ const displayCatagories = (catagories) => {
         const caragoryDiv = document.createElement('div');
         caragoryDiv.innerHTML = `
         <div >
-             <button onclick="loadNewsDetails('${catagori.category_id}')"   class=" mt-3 border border-0  bg-white text-secondary">${catagori.category_name}</button>
+             <button onclick="loadNewsDetails('${catagori.category_id}')" style="    background-color: #EEEFFF; color: #5D5FEF;" class=" mt-3 border border-0 rounded">${catagori.category_name}</button>
         </div>
 
     `;
@@ -37,7 +37,7 @@ const toggleSpiner = isLoading => {
     }
 }
 
-// click button then Show news --------------------------------
+// click button then Show News --------------------------------
 
 const loadNewsDetails = (catagori_id) => {
     // loder start 
