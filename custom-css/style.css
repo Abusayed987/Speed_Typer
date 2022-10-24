@@ -1,6 +1,13 @@
 #navbar_name{
     background-color: #5D5FEF;
     color: #fff;
-    /* border-radius: 10px; */
+
+
+}
+header, menu{
+    background-color: #F6F6F7;
+}
+menu{
+    margin: 0 auto;
 
 }
