@@ -13,16 +13,21 @@ const displayCatagories = (catagories) => {
     catagories.forEach(catagori => {
         const caragoryDiv = document.createElement('div');
         caragoryDiv.innerHTML = `
-        <div>
-            <button onclick="loadNewsDetails('${catagori.category_id}')"  style="background-color:#EEEFFF;color: #5D5FEF;"  class=" border border-0  rounded ">${catagori.category_name}</button>
+        <div >
+             <button onclick="loadNewsDetails('${catagori.category_id}')"   class=" mt-3 border border-0  bg-white text-secondary">${catagori.category_name}</button>
         </div>
+
     `;
         caragorySection.appendChild(caragoryDiv);
+
     });
 
 }
 loadCatagories();
-// toggle spiner 
+
+
+// toggle spiner ---------
+
 const toggleSpiner = isLoading => {
     const spiner = document.getElementById('loder');
     if (isLoading) {
@@ -32,8 +37,7 @@ const toggleSpiner = isLoading => {
     }
 }
 
-
-// click button then Show news ---------------------------------------------------------------
+// click button then Show news --------------------------------
 
 const loadNewsDetails = (catagori_id) => {
     // loder start 
@@ -43,29 +47,44 @@ const loadNewsDetails = (catagori_id) => {
         .then(res => res.json())
         .then(data => displayNewsDetails(data.data));
 }
-// message no data 
-
 
 
 const displayNewsDetails = (newsDetails) => {
-
-    // console.log(newsDetails);
+    
+    //  tota news itemscount
     const items = document.getElementById('items_number');
     items.innerHTML = `
     <div>
         <p class="bg-white p-3 mt-5 rounded "> ${newsDetails.length ? newsDetails.length : 'No Data'} items found for This Category !</p>
     </div>
     `;
+    // sort section 
+    const sort = document.getElementById('sort');
+    sort.innerHTML=`
+    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-center align-items-center">
+        <p class="mt-1" >Sort By View: </p>
+        <p class="btn border border-3" disabled> Default </p>
+    </div>
+    <div>
+        <button class="border border-0  btn btn-primary">Today's Pick</button>
+        <button class="border border-2 btn ">Trending</button>
+    </div>
+</div>
+    `
+    // message no data 
     const messageSection = document.getElementById('no_data_found');
-    if (newsDetails.length === 0 ) {
+    if (newsDetails.length === 0) {
         messageSection.classList.remove('d-none')
     } else {
         messageSection.classList.add('d-none')
     };
-    
+
+    // news details
     const newsDetailsSection = document.getElementById('news_details');
     newsDetailsSection.innerText = '';
     newsDetails.forEach(newsDetail => {
+
         const newsDetailDiv = document.createElement('div');
         newsDetailDiv.innerHTML = `
         <div class="d-flex mt-4  bg-white p-4 rounded"> 
