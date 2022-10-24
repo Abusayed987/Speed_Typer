@@ -43,6 +43,10 @@ const loadNewsDetails = (catagori_id) => {
         .then(res => res.json())
         .then(data => displayNewsDetails(data.data));
 }
+// message no data 
+
+
+
 const displayNewsDetails = (newsDetails) => {
 
     // console.log(newsDetails);
@@ -52,7 +56,13 @@ const displayNewsDetails = (newsDetails) => {
         <p class="bg-white p-3 mt-5 rounded "> ${newsDetails.length ? newsDetails.length : 'No Data'} items found for This Category !</p>
     </div>
     `;
-
+    const messageSection = document.getElementById('no_data_found');
+    if (newsDetails.length === 0 ) {
+        messageSection.classList.remove('d-none')
+    } else {
+        messageSection.classList.add('d-none')
+    };
+    
     const newsDetailsSection = document.getElementById('news_details');
     newsDetailsSection.innerText = '';
     newsDetails.forEach(newsDetail => {
@@ -105,7 +115,7 @@ const displayNewsDetails = (newsDetails) => {
         `;
         newsDetailsSection.appendChild(newsDetailDiv);
     });
-// stop loder 
-toggleSpiner(false)
+    // stop loder 
+    toggleSpiner(false)
 }
-// loadNewsDetails('01')
+loadNewsDetails('05')
