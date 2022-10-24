@@ -1,4 +1,5 @@
-// caragories section 
+// caragories section ------------------------------------------------------------------
+
 const loadCatagories = () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     fetch(url)
@@ -6,7 +7,6 @@ const loadCatagories = () => {
         .then(data => displayCatagories(data.data.news_category));
 }
 const displayCatagories = (catagories) => {
-    // console.log(catagories);
 
     const caragorySection = document.getElementById('catagory_section');
 
@@ -14,28 +14,36 @@ const displayCatagories = (catagories) => {
         const caragoryDiv = document.createElement('div');
         caragoryDiv.innerHTML = `
         <div>
-            <button onclick="loadNewsDetails('${catagori.category_id}')" style="background-color:#EEEFFF;color: #5D5FEF;" class=" border border-0  rounded ">${catagori.category_name}</button>
+            <button onclick="loadNewsDetails('${catagori.category_id}')"  style="background-color:#EEEFFF;color: #5D5FEF;"  class=" border border-0  rounded ">${catagori.category_name}</button>
         </div>
     `;
-        caragorySection.appendChild(caragoryDiv)
+        caragorySection.appendChild(caragoryDiv);
     });
-
 
 }
 loadCatagories();
+
+
+// click button then Show news ---------------------------------------------------------------
 
 const loadNewsDetails = (catagori_id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${catagori_id}`
     fetch(url)
         .then(res => res.json())
-        .then(data => displayNewsDetails(data.data))
+        .then(data => displayNewsDetails(data.data));
 }
 const displayNewsDetails = (newsDetails) => {
     console.log(newsDetails);
+    const items = document.getElementById('items_number');
+    items.innerHTML = `
+    <div>
+        <p class="bg-white p-3 mt-5 rounded "> ${newsDetails.length ? newsDetails.length : 'No Data'} items found for This Category !</p>
+    </div>
+    `;
+
     const newsDetailsSection = document.getElementById('news_details');
 
     newsDetails.forEach(newsDetail => {
-        console.log(newsDetail);
         const newsDetailDiv = document.createElement('div');
         newsDetailDiv.innerHTML = `
         <div class="d-flex mt-4  bg-white p-4 rounded"> 
@@ -51,20 +59,39 @@ const displayNewsDetails = (newsDetails) => {
                         <img style="width:40px" class=" img-fluid rounded-circle " src="${newsDetail.author.img}" alt="writer img">
                     </div>
                     <div class="ms-1">
-                        <h6>${newsDetail.author.name}</h6>
-                        <p class="text-secondary">${newsDetail.author.published_date.slice(0, 11)}</p>
+                        <h6>${newsDetail.author.name ? newsDetail.author.name : 'No data     found'}</h6>
+                        <p class="text-secondary">${newsDetail.author.published_date ? newsDetail.author.published_date.slice(0, 11) : 'No date found'}</p>
                     </div>
                 </div>
                 <h6>Total Views: ${newsDetail.total_view ? newsDetail.total_view : 'no View'}</h6>
-                <button class="bg-primary text-white   border border-0 rounded ">show more</button>
+                
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showmoreModal">
+                Show More
+                </button>
+
+
+            <div class="modal fade" id="showmoreModal" data-bs-backdrop="static"        data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="showmoreModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                                 <h1 class="modal-title fs-5" id="showmoreModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                 </div>
+                                    <div class="modal-body">
+                                     ...
+                                    </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                         </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>  
         `
         newsDetailsSection.appendChild(newsDetailDiv);
     });
-
-
 }
-
 loadNewsDetails('01')
