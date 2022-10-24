@@ -38,13 +38,13 @@ const displayNewsDetails = (newsDetails) => {
         console.log(newsDetail);
         const newsDetailDiv = document.createElement('div');
         newsDetailDiv.innerHTML = `
-        <div class="d-flex mt-4 bg-white p-4 rounded"> 
+        <div class="d-flex mt-4  bg-white p-4 rounded"> 
         <div class="">
             <img class="img-fluid rounded" src="${newsDetail.thumbnail_url}" alt="thamnnail img">
         </div>
         <div class="ms-3">
             <h4 class="container">${newsDetail.title}</h4>
-            <p class="text-secondary container">${newsDetail.details.slice(0, 550)}...</p>
+            <p class="text-secondary container">${newsDetail.details.slice(0, 500)}...</p>
             <div class="container d-flex justify-content-between align-items-center">
                 <div class="d-flex">
                     <div class="p-1">
